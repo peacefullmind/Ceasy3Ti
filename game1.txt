@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h> 
+
+
+int main() 
+{
+
+	double p;
+	int x;
+	printf("please input times you want=>");
+
+	
+	scanf("%d", &x);
+	printf("please input price=>");
+
+	
+	scanf("%lf", &p);
+
+
+	double myp[7] = {};
+	myp[0] = p;
+	int myright = 0;
+	for (int k = 1; k <= x; k++)
+	{
+		int answer;
+		for (int i = 1; i <= 6; i++)
+		{
+			int a = rand() % 2;
+			if (a == 0) {
+				myp[i] = myp[i - 1] + 1;
+			}
+			else {
+				myp[i] = myp[i - 1] - 1;
+			}
+			
+		}
+
+		printf("第%d次\n", k);
+		printf("1.up 2.down 3.keep same ?");
+		
+		scanf("%d", &answer);
+		printf("%g元—>%g元—>%g元—>%g元—>%g元—>%g元—>%g元   ", myp[0], myp[1], myp[2], myp[3], myp[4], myp[5], myp[6]);
+		if (((myp[6] - myp[0] > 0) && (answer == 1)) || ((myp[6] - myp[0] < 0) && (answer == 2)) || ((myp[6] - myp[0] == 0) && (answer == 3)))
+		{
+			printf("RIGHT\n");
+			myright++;
+		}
+		else {
+			printf("WRONG\n");
+		}
+
+	}
+	float v = (float)myright / (float)x * 100;
+	printf("\n");
+	printf("\n");
+	printf("%d胜%d负，（胜率：%.1f%%）\n", myright, x - myright, v);
+}

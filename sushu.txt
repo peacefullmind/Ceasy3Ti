@@ -1,0 +1,48 @@
+#include <Stdio.h>
+#include <math.h>
+
+
+int isPrimeNum(int num)
+{
+	for (int i = 2; i <= sqrt((double)num); i++)//优化,从2判断到根号num就可以了
+	{
+		if (num % i == 0)
+		{
+
+			return 0;
+		}
+	}
+	return 1;
+}
+
+
+int main()
+{
+	int n, k;
+	printf("Please input n==>");
+	//n = 2000;
+	scanf("%d", &n);
+	printf("Please input k==>");
+	//k = 10;
+	scanf("%d", &k);
+	int find = 0;
+	int findnum[1000] = {};
+	for (int ii = n; find < k; ii++)
+	{
+		if (isPrimeNum(ii) == 1)
+		{
+			findnum[find] = ii;
+			find++;
+		}
+	}
+	printf("%d%s%d%s", n, "以上的", k, "个素数为：");
+
+	for (int tt = 0; tt < find; tt++)
+	{
+		printf("%d%s", findnum[tt], " ");
+	}
+
+
+
+	return 0;
+}

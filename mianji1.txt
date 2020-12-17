@@ -1,0 +1,48 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+
+
+
+
+#define PI acos(-1)
+int main()
+{
+	printf("初期分割数：");
+	int x;
+	
+	
+	scanf("%d", &x);
+	double wucha = 100;
+	double ww = 0.0001;
+	double Sr = 2;
+	int c = 0;
+	double myS = 100;
+	while (wucha >= ww)
+	{
+		printf("分割数= %d\n", x + c);
+
+		double SS = 0;
+		for (int i = 1; i <= x + c; i++)
+		{
+			double xiadi = sin(PI / ((double)x + (double)c) * (double)i);
+			double shangdi =sin( PI / ((double)x + (double)c) * ((double)i - 1));
+			double h = PI / ((double)x + (double)c);
+			SS = SS + (shangdi + xiadi) * h / 2;
+		}
+
+		myS = SS;
+		printf("S= %f      ", myS);
+		wucha = fabs(Sr - myS);
+		printf("误差= %f \n", wucha);
+		c++;
+
+
+
+	}
+
+
+}
+
